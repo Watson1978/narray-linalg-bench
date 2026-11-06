@@ -1,0 +1,8 @@
+{
+  "kalman_riccati": {
+    "expm_vs_eigh_wide_symmetric": {
+      "backends": ["numo"],
+      "reason": "expm scales by the largest element instead of a matrix norm, so on a symmetric 256 x 256 matrix with entries in [-1, 1] it differs from V diag(exp(w)) V^T by 2e-5 where scipy and CuPy are within 1e-14. numo-linalg-alt 0.10.1 has the defect (docs/numo-linalg-alt-notes.md 0). cumo shared the code until master 90935207 (#584) fixed it (docs/cumo-issues.md 2)."
+    }
+  }
+}
